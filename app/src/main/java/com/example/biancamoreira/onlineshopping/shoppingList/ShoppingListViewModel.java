@@ -1,6 +1,7 @@
-package com.example.biancamoreira.onlineshopping;
+package com.example.biancamoreira.onlineshopping.shoppingList;
 
-import java.util.ArrayList;
+import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
+
 import java.util.List;
 
 import io.reactivex.Observable;

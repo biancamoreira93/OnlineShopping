@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="20dp"
+    android:layout_marginStart="20dp"
+    android:background="@drawable/rounded_border"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imageViewShoppingCartItem"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:background="@color/lightGray"
+        android:src="@mipmap/blouse">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textShoppingCartItem"
+        android:layout_width="0dp"
+        android:layout_weight="0.7"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:background="@color/lightGray"
+        android:gravity="center"
+        android:text="@string/blusas"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/priceItemCart"
+        android:layout_width="80dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="R$ 90.90"
+        android:textColor="@color/white"
+        android:textSize="13sp">
+    </TextView>
+
+</LinearLayout>
