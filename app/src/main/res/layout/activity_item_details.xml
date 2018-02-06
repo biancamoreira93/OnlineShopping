@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        android:theme="?attr/actionBarTheme" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar3"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageViewShoppingCartItem"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:background="@color/lightGray"
+            android:src="@mipmap/blouse">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/shoppingItemName"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:background="@color/lightGray"
+            android:padding="20dp"
+            android:text="Blusa Manga Longa"
+            android:textAlignment="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/shoppingItemDescription"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:background="@color/lightGray"
+            android:padding="5dp"
+            android:text="Descrição:\n - Material acetinado\n - Abertura Horizontal\n"
+            android:textAlignment="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/shoppingItemPrice"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:text="R$ 90.90"
+            android:textAlignment="center"
+            android:textColor="@color/white">
+        </TextView>
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/addToCartButton"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:background="@drawable/button_rounded_border"
+            android:padding="10dp"
+            android:text="Comprar"
+            android:onClick="addToCart"
+            android:textColor="@color/white">
+        </Button>
+    </LinearLayout>
+</RelativeLayout>

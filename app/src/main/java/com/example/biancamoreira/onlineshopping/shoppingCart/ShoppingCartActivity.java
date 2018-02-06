@@ -3,6 +3,7 @@ package com.example.biancamoreira.onlineshopping.shoppingCart;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ShoppingCartActivity extends Activity {
+public class ShoppingCartActivity extends AppCompatActivity {
 
     @BindView(R.id.shoppingCartList)
     ListView shoppingCartList;

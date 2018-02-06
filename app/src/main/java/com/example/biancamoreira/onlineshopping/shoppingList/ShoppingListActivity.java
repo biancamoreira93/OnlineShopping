@@ -4,16 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
 
+import com.example.biancamoreira.onlineshopping.ItemDetailsActivity;
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
-import com.example.biancamoreira.onlineshopping.shoppingCart.ShoppingCartActivity;
 
-import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,7 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ShoppingListActivity extends Activity {
+public class ShoppingListActivity extends AppCompatActivity {
 
 
     @BindView(R.id.shoppingListOptions)
@@ -30,8 +29,6 @@ public class ShoppingListActivity extends Activity {
 
     @BindView(R.id.searchText)
     EditText searchText;
-
-    private List<ShoppingListItem> shoppingListItemsCart;
 
     private ShoppingListAdapter shoppingListAdapter;
     private CompositeDisposable compositeDisposable;
@@ -73,13 +70,12 @@ public class ShoppingListActivity extends Activity {
 
     private void getItemClicked(int position) {
         ShoppingListItem shoppingListItem = (ShoppingListItem) shoppingListOptions.getItemAtPosition(position);
-        shoppingListItemsCart = Arrays.asList(shoppingListItem);
-        callCartActivity();
+        callDetailsActivity(shoppingListItem);
     }
 
-    private void callCartActivity() {
-        Intent intent = new Intent(this, ShoppingCartActivity.class);
-        intent.putExtra("shoppingListItems", (Serializable) shoppingListItemsCart);
+    private void callDetailsActivity(ShoppingListItem shoppingListItem) {
+        Intent intent = new Intent(this, ItemDetailsActivity.class);
+        intent.putExtra("shoppingListItem", shoppingListItem);
         startActivity(intent);
     }
 

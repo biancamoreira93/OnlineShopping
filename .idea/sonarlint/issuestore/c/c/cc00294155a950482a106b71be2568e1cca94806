@@ -1,0 +1,6 @@
+
+Fsquid:S1602",Remove useless curly braces around statement(Ëş³şÿÿÿÿ
+wsquid:S1450"bRemove the "compositeDisposable" field and declare it as a local variable in the relevant methods.(á™µæ
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.( ¶¢íøÿÿÿÿ
+Zsquid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ8Á×ñ³–,
+jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(¶á©ä8Á×ñ³–,

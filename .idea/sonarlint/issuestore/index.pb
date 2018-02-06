@@ -1,0 +1,23 @@
+
+’
+bapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListViewModel.java,f/0/f03d01fa1ed9eb8aa5ce1d1430fa7c6c32969055
+’
+bapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/ShoppingCartViewModel.java,1/3/13d96ddd8f5e47900a28bfe34be07f978a6f5146
+’
+bapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListDataModel.java,b/2/b25bdc48117f26c5a8838481922c4e0c2c635314
+”
+dapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/ShoppingCartListAdapter.java,3/5/352258981db0e5716ce439214ba350f259105568
+’
+bapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/ShoppingCartDataModel.java,d/8/d894183d940649de322ced314fb70ae4d499d1b8
+†
+Vapp/src/main/java/com/example/biancamoreira/onlineshopping/model/ShoppingListItem.java,b/0/b08ed4c801c2ab063cffdc96a5fcdad92fcd1626
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+|
+Lapp/src/main/java/com/example/biancamoreira/onlineshopping/MainActivity.java,d/3/d3ae458e432cc32c92c7cff30e426fbf20a4fd32
+‘
+aapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/ShoppingCartActivity.java,3/e/3e915c9a38470545ef625cb84ddd887c1ab6e59f
+‘
+aapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListActivity.java,c/c/cc00294155a950482a106b71be2568e1cca94806
+ƒ
+Sapp/src/main/java/com/example/biancamoreira/onlineshopping/ItemDetailsActivity.java,2/8/282eb22af65eefc268848affca1dc971d7e765b0
