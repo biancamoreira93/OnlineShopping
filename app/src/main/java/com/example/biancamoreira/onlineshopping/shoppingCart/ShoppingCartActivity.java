@@ -68,6 +68,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
 
     private void setShoppingTotalPrice(Double newTotalPrice) {
+        /*TODO Move it to ViewModel*/
         totalPrice.setText(String.format("%.2f", newTotalPrice));
     }
 
