@@ -1,7 +1,7 @@
 package com.example.biancamoreira.onlineshopping.shoppingCart;
 
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
+import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ public class ShoppingCartViewModel {
         shoppingCartDataModel = new ShoppingCartDataModel();
     }
 
-    public Observable<Double> updateShoppingCartTotalPrice(Double oldValue, List<ShoppingListItem> shoppingListItems) {
-        return Observable.just(calculateShoppingCartNewPrice(oldValue, shoppingListItems));
+    public Observable<Double> updateShoppingCartTotalPrice(Double oldValue, List<ShoppingItem> shoppingItems) {
+        return Observable.just(calculateShoppingCartNewPrice(oldValue, shoppingItems));
     }
 
-    private Double calculateShoppingCartNewPrice(Double oldValue, List<ShoppingListItem> shoppingListItems) {
+    private Double calculateShoppingCartNewPrice(Double oldValue, List<ShoppingItem> shoppingItems) {
         double newValue = oldValue;
-        for (ShoppingListItem shoppingListItem: shoppingListItems) {
-            double addValue = Double.valueOf(shoppingListItem.getItemPrice());
+        for (ShoppingItem shoppingItem : shoppingItems) {
+            double addValue = Double.valueOf(shoppingItem.getItemPrice());
             newValue =+ addValue;
         }
         return newValue;

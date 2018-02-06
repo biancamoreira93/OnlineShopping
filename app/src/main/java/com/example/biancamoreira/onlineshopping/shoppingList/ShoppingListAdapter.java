@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -14,38 +13,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.biancamoreira.onlineshopping.R;
-import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
+import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
-import java.io.FilterWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingListAdapter extends BaseAdapter implements Filterable {
 
-    private List<ShoppingListItem> shoppingListItems;
-    private List<ShoppingListItem> shoppingListItemsFilter;
+    private List<ShoppingItem> shoppingItems;
+    private List<ShoppingItem> shoppingItemsFilter;
     private ShoppingItemFiltered filtered;
     private Context context;
 
-    public ShoppingListAdapter(@NonNull Context context, int resource, @NonNull List<ShoppingListItem> objects) {
+    public ShoppingListAdapter(@NonNull Context context, int resource, @NonNull List<ShoppingItem> objects) {
         this.context = context;
-        this.shoppingListItems = objects;
-        this.shoppingListItemsFilter = objects;
+        this.shoppingItems = objects;
+        this.shoppingItemsFilter = objects;
     }
 
     @Override
     public int getCount() {
-        return shoppingListItems.size();
+        return shoppingItems.size();
     }
 
     @Override
-    public ShoppingListItem getItem(int position) {
-        return shoppingListItems.get(position);
+    public ShoppingItem getItem(int position) {
+        return shoppingItems.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return shoppingListItems.get(position).hashCode();
+        return shoppingItems.get(position).hashCode();
     }
 
     @NonNull
@@ -64,8 +62,8 @@ public class ShoppingListAdapter extends BaseAdapter implements Filterable {
             holder = (ViewHolder) view.getTag();
         }
 
-        ShoppingListItem shoppingListItem = getItem(position);
-        holder.setText(shoppingListItem.getItemName());
+        ShoppingItem shoppingItem = getItem(position);
+        holder.setText(shoppingItem.getItemName());
 
         return view;
     }
@@ -105,15 +103,15 @@ public class ShoppingListAdapter extends BaseAdapter implements Filterable {
             FilterResults results = new FilterResults();
 
             if (constraint == null || constraint.length() == 0) {
-                results.values = shoppingListItemsFilter;
-                results.count = shoppingListItemsFilter.size();
+                results.values = shoppingItemsFilter;
+                results.count = shoppingItemsFilter.size();
             }
             else {
-                ArrayList<ShoppingListItem> filteredShoppingItem = new ArrayList<>();
+                ArrayList<ShoppingItem> filteredShoppingItem = new ArrayList<>();
 
-                for (ShoppingListItem shoppingListItem : shoppingListItemsFilter) {
-                    if (shoppingListItem.getItemName().toUpperCase().contains( constraint.toString().toUpperCase() )) {
-                        filteredShoppingItem.add(shoppingListItem);
+                for (ShoppingItem shoppingItem : shoppingItemsFilter) {
+                    if (shoppingItem.getItemName().toUpperCase().contains( constraint.toString().toUpperCase() )) {
+                        filteredShoppingItem.add(shoppingItem);
                     }
                 }
 
@@ -126,7 +124,7 @@ public class ShoppingListAdapter extends BaseAdapter implements Filterable {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            shoppingListItems = (ArrayList<ShoppingListItem>) results.values;
+            shoppingItems = (ArrayList<ShoppingItem>) results.values;
             notifyDataSetChanged();
         }
     }

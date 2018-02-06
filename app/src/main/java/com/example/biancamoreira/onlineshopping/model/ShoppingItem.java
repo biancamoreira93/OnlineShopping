@@ -2,7 +2,7 @@ package com.example.biancamoreira.onlineshopping.model;
 
 import java.io.Serializable;
 
-public class ShoppingListItem implements Serializable {
+public class ShoppingItem implements Serializable {
     private String itemName;
     private String itemPictureSquared;
     private String description;
@@ -10,12 +10,12 @@ public class ShoppingListItem implements Serializable {
     private boolean availability;
     private int itemsInStock;
 
-    public ShoppingListItem(String itemName,
-                            String itemPictureSquared,
-                            String description,
-                            String price,
-                            boolean availability,
-                            int itemsInStock) {
+    public ShoppingItem(String itemName,
+                        String itemPictureSquared,
+                        String description,
+                        String price,
+                        boolean availability,
+                        int itemsInStock) {
         this.itemName = itemName;
         this.itemPictureSquared = itemPictureSquared;
         this.description = description;

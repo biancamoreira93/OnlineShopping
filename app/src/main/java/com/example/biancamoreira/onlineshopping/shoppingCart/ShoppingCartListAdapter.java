@@ -11,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.biancamoreira.onlineshopping.R;
-import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
+import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
 import java.util.List;
 
-class ShoppingCartListAdapter extends ArrayAdapter<ShoppingListItem> {
-    public ShoppingCartListAdapter(@NonNull Context context, int resource, @NonNull List<ShoppingListItem> objects) {
+class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
+    public ShoppingCartListAdapter(@NonNull Context context, int resource, @NonNull List<ShoppingItem> objects) {
         super(context, resource, objects);
     }
 
@@ -36,8 +36,8 @@ class ShoppingCartListAdapter extends ArrayAdapter<ShoppingListItem> {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        ShoppingListItem shoppingListItem = getItem(position);
-        viewHolder.setText(shoppingListItem.getItemName());
+        ShoppingItem shoppingItem = getItem(position);
+        viewHolder.setText(shoppingItem.getItemName());
 
         return view;
     }

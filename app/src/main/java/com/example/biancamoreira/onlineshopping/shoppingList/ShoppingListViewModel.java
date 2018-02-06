@@ -1,6 +1,6 @@
 package com.example.biancamoreira.onlineshopping.shoppingList;
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
+import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ public class ShoppingListViewModel {
         dataModel = new ShoppingListDataModel();
     }
 
-    public Observable<List<ShoppingListItem>> getAvailableShoppingItems() {
+    public Observable<List<ShoppingItem>> getAvailableShoppingItems() {
          return dataModel.getShoppingItems()
                  .flatMapIterable(listItems -> listItems)
-                 .filter(ShoppingListItem::getAvailability)
+                 .filter(ShoppingItem::getAvailability)
                  .toList()
                  .toObservable();
     }

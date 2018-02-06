@@ -1,6 +1,5 @@
 package com.example.biancamoreira.onlineshopping.shoppingList;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +10,7 @@ import android.widget.GridView;
 
 import com.example.biancamoreira.onlineshopping.ItemDetailsActivity;
 import com.example.biancamoreira.onlineshopping.R;
-import com.example.biancamoreira.onlineshopping.model.ShoppingListItem;
+import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
 import java.util.List;
 
@@ -60,8 +59,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     }
 
-    private void setShoppingListOptions(List<ShoppingListItem> shoppingListItems) {
-        shoppingListAdapter = new ShoppingListAdapter(this, R.id.shoppingListOptions, shoppingListItems);
+    private void setShoppingListOptions(List<ShoppingItem> shoppingItems) {
+        shoppingListAdapter = new ShoppingListAdapter(this, R.id.shoppingListOptions, shoppingItems);
         shoppingListOptions.setAdapter(shoppingListAdapter);
         shoppingListOptions.setOnItemClickListener((parent, view, position, id) -> {
             getItemClicked(position);
@@ -69,13 +68,13 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
     private void getItemClicked(int position) {
-        ShoppingListItem shoppingListItem = (ShoppingListItem) shoppingListOptions.getItemAtPosition(position);
-        callDetailsActivity(shoppingListItem);
+        ShoppingItem shoppingItem = (ShoppingItem) shoppingListOptions.getItemAtPosition(position);
+        callDetailsActivity(shoppingItem);
     }
 
-    private void callDetailsActivity(ShoppingListItem shoppingListItem) {
+    private void callDetailsActivity(ShoppingItem shoppingItem) {
         Intent intent = new Intent(this, ItemDetailsActivity.class);
-        intent.putExtra("shoppingListItem", shoppingListItem);
+        intent.putExtra("shoppingItem", shoppingItem);
         startActivity(intent);
     }
 
