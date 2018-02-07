@@ -9,8 +9,6 @@ bapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/Shoppin
 dapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/ShoppingCartListAdapter.java,3/5/352258981db0e5716ce439214ba350f259105568
 í
 bapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/ShoppingCartDataModel.java,d/8/d894183d940649de322ced314fb70ae4d499d1b8
-Ü
-Vapp/src/main/java/com/example/biancamoreira/onlineshopping/model/ShoppingListItem.java,b/0/b08ed4c801c2ab063cffdc96a5fcdad92fcd1626
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 |
@@ -21,3 +19,5 @@ aapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingCart/Shoppin
 aapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListActivity.java,c/c/cc00294155a950482a106b71be2568e1cca94806
 É
 Sapp/src/main/java/com/example/biancamoreira/onlineshopping/ItemDetailsActivity.java,2/8/282eb22af65eefc268848affca1dc971d7e765b0
+ê
+`app/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListAdapter.java,7/3/730d8ab85cc541c65b7e49b1217965810e8b04ff

@@ -1,4 +1,5 @@
 
 Ssquid:S1068"9Remove this unused "shoppingCartDataModel" private field.(õÝëÖþÿÿÿÿ
-,squid:S2757"Was "+=" meant instead?(ý“‹
 rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(÷’“¹ùÿÿÿÿ
+,squid:S2757"Was "+=" meant instead?(ý“‹
+_squid:S2130">Use "Double.parseDouble" for this string-to-double conversion.(èðÇøþÿÿÿÿ8ƒºöæ–,

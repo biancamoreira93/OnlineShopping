@@ -1,6 +1,8 @@
 
 {squid:S1450"fRemove the "shoppingCartListAdapter" field and declare it as a local variable in the relevant methods.(°™ŽÁ
-›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Ï¾‹ûÿÿÿÿ
-rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(÷’“¹ùÿÿÿÿ
-Zsquid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ8ô®ñ³–,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(‘À€§ùÿÿÿÿ8×«ðæ–,
 jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ƒñ›Ò8ô®ñ³–,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(è©Ã¦ýÿÿÿÿ8¾µè–,
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(÷’“¹ùÿÿÿÿ
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Ï¾‹ûÿÿÿÿ
+Ssquid:S1135"2Complete the task associated to this TODO comment.(è©Ã¦ýÿÿÿÿ8¼–è–,

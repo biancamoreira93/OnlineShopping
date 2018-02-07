@@ -8,6 +8,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.biancamoreira.onlineshopping.R;
+import com.example.biancamoreira.onlineshopping.cartUtils.Cart;
+import com.example.biancamoreira.onlineshopping.cartUtils.CartHelper;
 import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
 import java.util.Arrays;
@@ -31,6 +33,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private CompositeDisposable compositeDisposable;
     private ShoppingCartViewModel shoppingCartViewModel;
     private ShoppingItem shoppingItem;
+    private Cart cart;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +45,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
         compositeDisposable = new CompositeDisposable();
 
         shoppingItem = (ShoppingItem) getIntent().getSerializableExtra("shoppingItem");
+        cart = CartHelper.getCart();
 
-        /*TODO CartHelper and Cart to get shoppingItem from it */
-        setShoppingListOptions(Arrays.asList(shoppingItem));
+        cart.addShoppingItem(shoppingItem);
+        setShoppingListOptions(cart.getShoppingItems());
     }
 
     @Override
@@ -56,8 +60,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private void bind() {
         double oldShoppingCartTotalValue = Double.valueOf(totalPrice.getText().toString());
         compositeDisposable.add(
-                /*TODO CartHelper and Cart to get shoppingItem from it */
-                shoppingCartViewModel.updateShoppingCartTotalPrice(oldShoppingCartTotalValue, Arrays.asList(shoppingItem))
+                shoppingCartViewModel.updateShoppingCartTotalPrice(oldShoppingCartTotalValue, cart.getShoppingItems())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.computation())
                 .subscribe(this::setShoppingTotalPrice)
