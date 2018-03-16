@@ -21,7 +21,6 @@ public class ShoppingListDataModel {
                 new ShoppingItem("Blusa Manga Longa", "", "", "56.90", true, 10),
                 new ShoppingItem("Blusa Manga Curta", "", "", "90.90", true, 9),
                 new ShoppingItem("Blusa Listrada", "", "", "120.90", true, 8),
-                new ShoppingItem("Blusa Manta", "", "", "90.90", true, 7),
                 new ShoppingItem("Blusa de Alcinha", "", "", "85.90", true, 12),
                 new ShoppingItem("Vestido Mid Listrado", "", "", "75.90", true, 5),
                 new ShoppingItem("Vestido Longo Listrado", "", "", "50.90", true, 6),

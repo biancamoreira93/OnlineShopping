@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
 
-import com.example.biancamoreira.onlineshopping.ItemDetailsActivity;
+import com.example.biancamoreira.onlineshopping.itemDetails.ItemDetailsActivity;
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 

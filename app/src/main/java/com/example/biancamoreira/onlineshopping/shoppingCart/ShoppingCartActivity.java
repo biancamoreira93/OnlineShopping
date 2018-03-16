@@ -12,7 +12,6 @@ import com.example.biancamoreira.onlineshopping.cartUtils.Cart;
 import com.example.biancamoreira.onlineshopping.cartUtils.CartHelper;
 import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -79,5 +78,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
     }
 
     public void closeCartAndGoToPayment(View view) {
+    }
+
+    public void continueShopping(View view) {
+        setResult(1);
+        finish();
     }
 }

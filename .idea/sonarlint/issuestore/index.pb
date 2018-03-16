@@ -21,3 +21,11 @@ aapp/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/Shoppin
 Sapp/src/main/java/com/example/biancamoreira/onlineshopping/ItemDetailsActivity.java,2/8/282eb22af65eefc268848affca1dc971d7e765b0
 ê
 `app/src/main/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListAdapter.java,7/3/730d8ab85cc541c65b7e49b1217965810e8b04ff
+~
+Napp/src/main/java/com/example/biancamoreira/onlineshopping/cartUtils/Cart.java,f/5/f5b41c823dadedae48177f9af5076e58063d3a57
+Ñ
+Tapp/src/main/java/com/example/biancamoreira/onlineshopping/cartUtils/CartHelper.java,c/d/cdfdfb33d6e8284315ba9a05ba92a471cfed0b5f
+ñ
+fapp/src/test/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListDataModelTest.java,f/d/fdd4b44b318573340dba750f3038541eb91df1f0
+ñ
+fapp/src/test/java/com/example/biancamoreira/onlineshopping/shoppingList/ShoppingListViewModelTest.java,1/7/1755fb3a2f8ecd0671999e39056e97475842b1e9
