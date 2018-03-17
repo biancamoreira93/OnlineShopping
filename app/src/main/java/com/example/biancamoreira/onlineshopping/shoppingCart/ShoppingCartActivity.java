@@ -4,16 +4,14 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.biancamoreira.onlineshopping.OnSwipeTouchListener;
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.cartUtils.Cart;
 import com.example.biancamoreira.onlineshopping.cartUtils.CartHelper;
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ShoppingCartActivity extends AppCompatActivity {
+public class ShoppingCartActivity extends AppCompatActivity implements OnDataChangeListener {
 
     @BindView(R.id.shoppingCartList)
     ListView shoppingCartList;
@@ -56,7 +54,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        bind();
+        dataChanged(cart.getShoppingItems());
     }
 
     public void continueShopping(View view) {
@@ -67,23 +65,24 @@ public class ShoppingCartActivity extends AppCompatActivity {
     public void closeCartAndGoToPayment(View view) {
     }
 
-    private void bind() {
-        double oldShoppingCartTotalValue = Double.valueOf(totalPrice.getText().toString());
+    @Override
+    public void dataChanged(List<ShoppingItem> shoppingItems) {
         compositeDisposable.add(
-                shoppingCartViewModel.updateShoppingCartTotalPrice(oldShoppingCartTotalValue, cart.getShoppingItems())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.computation())
-                .subscribe(this::setShoppingTotalPrice)
+                shoppingCartViewModel.updateShoppingCartTotalPrice(shoppingCartListAdapter.shoppingItems)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.computation())
+                        .subscribe(this::setShoppingTotalPrice)
         );
     }
 
     private void setShoppingListOptions(List<ShoppingItem> shoppingItems) {
         shoppingCartListAdapter = new ShoppingCartListAdapter(this, R.id.shoppingListOptions, shoppingItems);
+        shoppingCartListAdapter.setDataChangedListener(this);
         shoppingCartList.setAdapter(shoppingCartListAdapter);
     }
 
+    @SuppressLint("DefaultLocale")
     private void setShoppingTotalPrice(Double newTotalPrice) {
-        /*TODO Move it to ViewModel*/
         totalPrice.setText(String.format("%.2f", newTotalPrice));
     }
 }

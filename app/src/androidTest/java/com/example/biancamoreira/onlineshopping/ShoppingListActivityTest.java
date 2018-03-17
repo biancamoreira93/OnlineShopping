@@ -2,7 +2,7 @@ package com.example.biancamoreira.onlineshopping;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 import com.example.biancamoreira.onlineshopping.shoppingList.ShoppingListActivity;
 
 import org.hamcrest.Description;

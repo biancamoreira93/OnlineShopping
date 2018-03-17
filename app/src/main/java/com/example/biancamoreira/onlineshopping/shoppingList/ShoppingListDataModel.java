@@ -2,7 +2,7 @@ package com.example.biancamoreira.onlineshopping.shoppingList;
 
 import android.support.annotation.NonNull;
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 
 import java.util.Arrays;
 import java.util.List;

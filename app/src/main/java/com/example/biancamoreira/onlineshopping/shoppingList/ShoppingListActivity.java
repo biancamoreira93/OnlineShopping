@@ -10,7 +10,7 @@ import android.widget.GridView;
 
 import com.example.biancamoreira.onlineshopping.itemDetails.ItemDetailsActivity;
 import com.example.biancamoreira.onlineshopping.R;
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 
 import java.util.List;
 

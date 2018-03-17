@@ -1,4 +1,4 @@
-package com.example.biancamoreira.onlineshopping.model;
+package com.example.biancamoreira.onlineshopping.domain;
 
 import java.io.Serializable;
 

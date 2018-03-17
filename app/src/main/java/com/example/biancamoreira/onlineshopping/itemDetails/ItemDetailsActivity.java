@@ -9,8 +9,7 @@ import android.view.View;
 
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.ShoppingNavigator;
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
-import com.example.biancamoreira.onlineshopping.shoppingCart.ShoppingCartActivity;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 

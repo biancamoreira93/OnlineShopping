@@ -1,14 +1,13 @@
 package com.example.biancamoreira.onlineshopping.shoppingList;
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import io.reactivex.functions.Consumer;
-import io.reactivex.observers.TestObserver;
+import rx.observers.TestObserver;
 
 import static junit.framework.Assert.assertEquals;
 

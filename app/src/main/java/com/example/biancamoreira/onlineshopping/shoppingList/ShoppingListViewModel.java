@@ -1,6 +1,6 @@
 package com.example.biancamoreira.onlineshopping.shoppingList;
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 
 import java.util.List;
 

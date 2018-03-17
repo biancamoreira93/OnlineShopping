@@ -3,7 +3,7 @@ package com.example.biancamoreira.onlineshopping;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
+import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 import com.example.biancamoreira.onlineshopping.shoppingCart.ShoppingCartActivity;
 
 public class ShoppingNavigator {
