@@ -1,12 +1,15 @@
 package com.example.biancamoreira.onlineshopping.shoppingCart;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.biancamoreira.onlineshopping.OnSwipeTouchListener;
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.cartUtils.Cart;
 import com.example.biancamoreira.onlineshopping.cartUtils.CartHelper;
@@ -56,6 +59,14 @@ public class ShoppingCartActivity extends AppCompatActivity {
         bind();
     }
 
+    public void continueShopping(View view) {
+        setResult(1);
+        finish();
+    }
+
+    public void closeCartAndGoToPayment(View view) {
+    }
+
     private void bind() {
         double oldShoppingCartTotalValue = Double.valueOf(totalPrice.getText().toString());
         compositeDisposable.add(
@@ -71,17 +82,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
         shoppingCartList.setAdapter(shoppingCartListAdapter);
     }
 
-
     private void setShoppingTotalPrice(Double newTotalPrice) {
         /*TODO Move it to ViewModel*/
         totalPrice.setText(String.format("%.2f", newTotalPrice));
-    }
-
-    public void closeCartAndGoToPayment(View view) {
-    }
-
-    public void continueShopping(View view) {
-        setResult(1);
-        finish();
     }
 }

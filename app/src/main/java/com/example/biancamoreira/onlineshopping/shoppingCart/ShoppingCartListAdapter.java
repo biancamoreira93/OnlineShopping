@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.biancamoreira.onlineshopping.OnSwipeTouchListener;
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.model.ShoppingItem;
 
@@ -28,18 +29,30 @@ class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
 
         if (view == null) {
             view = inflateView();
-            TextView textView = view.findViewById(R.id.textShoppingCartItem);
-            ImageView imageView = view.findViewById(R.id.imageViewShoppingCartItem);
-            viewHolder = new ViewHolder(textView, imageView);
+            viewHolder = initViewHolder(view);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        ShoppingItem shoppingItem = getItem(position);
-        viewHolder.setText(shoppingItem.getItemName());
+        setView(position, viewHolder, view);
 
         return view;
+    }
+
+    @NonNull
+    private ViewHolder initViewHolder(View view) {
+        ViewHolder viewHolder;TextView textShoppingCartItem = view.findViewById(R.id.textShoppingCartItem);
+        TextView deleteItemText = view.findViewById(R.id.deleteItemFromCart);
+        ImageView imageViewShoppingCartItem = view.findViewById(R.id.imageViewShoppingCartItem);
+        viewHolder = new ViewHolder(textShoppingCartItem, deleteItemText, imageViewShoppingCartItem);
+        return viewHolder;
+    }
+
+    private void setView(int position, ViewHolder viewHolder, View view) {
+        ShoppingItem shoppingItem = getItem(position);
+        viewHolder.setText(shoppingItem.getItemName());
+        setListener(view);
     }
 
     private View inflateView() {
@@ -47,13 +60,25 @@ class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
         return layoutInflater.inflate(R.layout.linear_layout_shopping_cart_list, null);
     }
 
+    private void setListener(View view) {
+        view.setOnTouchListener(new OnSwipeTouchListener(this.getContext()) {
+            @Override
+            public void onSwipeLeft() {
+                view.findViewById(R.id.deleteItemFromCart).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.priceItemCart).setVisibility(View.GONE);
+            }
+        });
+    }
+
     private class ViewHolder {
         TextView textView;
+        TextView deleteItemText;
         ImageView imageView;
 
-        public ViewHolder(TextView textView, ImageView imageView) {
+        ViewHolder(TextView textView, TextView deleteItemText, ImageView imageView) {
             this.textView = textView;
             this.imageView = imageView;
+            this.deleteItemText = deleteItemText;
         }
 
         public void setText(String text) {
