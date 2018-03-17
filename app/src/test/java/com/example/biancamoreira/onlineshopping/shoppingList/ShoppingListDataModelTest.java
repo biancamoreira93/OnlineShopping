@@ -25,6 +25,6 @@ public class ShoppingListDataModelTest {
     public void shouldGetShoppingListFromObservable() {
         List<ShoppingItem> shoppingItems = shoppingListDataModel.getShoppingItems().blockingFirst();
 
-        assertEquals(shoppingItems.size(), 10);
+        assertEquals(9, shoppingItems.size());
     }
 }

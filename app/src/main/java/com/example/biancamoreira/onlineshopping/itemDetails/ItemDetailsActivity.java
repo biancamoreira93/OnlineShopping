@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.ShoppingNavigator;
@@ -24,6 +25,15 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         navigator = new ShoppingNavigator();
         shoppingItem = (ShoppingItem) getIntent().getSerializableExtra("shoppingItem");
+
+        setShoppingItemDetails();
+    }
+
+    private void setShoppingItemDetails() {
+        TextView itemPrice =  findViewById(R.id.shoppingItemPrice);
+        itemPrice.setText(String.format("R$ %s", shoppingItem.getItemPrice()));
+        TextView shoppingItemName =  findViewById(R.id.shoppingItemName);
+        shoppingItemName.setText(shoppingItem.getItemName());
     }
 
     @Override

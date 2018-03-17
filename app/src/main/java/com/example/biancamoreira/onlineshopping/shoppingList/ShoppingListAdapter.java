@@ -55,16 +55,17 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements F
 
         if (view == null) {
             view = inflateView();
-            TextView textView = view.findViewById(R.id.textShoppingItem);
-            ImageView imageView = view.findViewById(R.id.imageViewShoppingItem);
-            holder = new ViewHolder(imageView, textView);
+            ImageView imageShoppingItem = view.findViewById(R.id.imageViewShoppingItem);
+            TextView textShoppingItem = view.findViewById(R.id.textShoppingItem);
+            TextView textPriceItem = view.findViewById(R.id.textShoppingItemPrice);
+            holder = new ViewHolder(imageShoppingItem, textShoppingItem, textPriceItem);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
         ShoppingItem shoppingItem = getItem(position);
-        holder.setText(shoppingItem.getItemName());
+        holder.setShoppingItemTexts(shoppingItem);
 
         return view;
     }
@@ -84,16 +85,19 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements F
     }
 
     private class ViewHolder {
-        ImageView imageView;
-        TextView textView;
+        ImageView imageShoppingItem;
+        TextView textShoppingItem;
+        TextView texPriceItem;
 
-        public ViewHolder(ImageView imageView, TextView textView) {
-            this.imageView = imageView;
-            this.textView = textView;
+        ViewHolder(ImageView imageShoppingItem, TextView textShoppingItem, TextView textPriceItem) {
+            this.textShoppingItem = textShoppingItem;
+            this.imageShoppingItem = imageShoppingItem;
+            this.texPriceItem = textPriceItem;
         }
 
-        public void setText(String text) {
-            this.textView.setText(text);
+        void setShoppingItemTexts(ShoppingItem shoppingItem) {
+            this.textShoppingItem.setText(shoppingItem.getItemName());
+            this.texPriceItem.setText(String.format("R$ %s", shoppingItem.getItemPrice()));
         }
     }
 

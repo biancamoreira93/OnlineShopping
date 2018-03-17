@@ -55,19 +55,19 @@ public class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
         return layoutInflater.inflate(R.layout.linear_layout_shopping_cart_list, null);
     }
 
-    @NonNull
     private ViewHolder initViewHolder(View view) {
         ViewHolder viewHolder;
         TextView textShoppingCartItem = view.findViewById(R.id.textShoppingCartItem);
+        TextView textPriceItem = view.findViewById(R.id.priceItemCart);
         TextView deleteItemText = view.findViewById(R.id.deleteItemFromCart);
         ImageView imageViewShoppingCartItem = view.findViewById(R.id.imageViewShoppingCartItem);
-        viewHolder = new ViewHolder(textShoppingCartItem, deleteItemText, imageViewShoppingCartItem);
+        viewHolder = new ViewHolder(textShoppingCartItem, textPriceItem, deleteItemText, imageViewShoppingCartItem);
         return viewHolder;
     }
 
     private void setView(int position, ViewHolder viewHolder, View view) {
         ShoppingItem shoppingItem = getItem(position);
-        viewHolder.setText(shoppingItem.getItemName());
+        viewHolder.setShoppingItemTexts(shoppingItem);
         setListeners(view, shoppingItem);
     }
 
@@ -94,18 +94,21 @@ public class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
     }
 
     private class ViewHolder {
-        TextView textView;
+        TextView textShoppingCartItem;
+        TextView textPriceItem;
         TextView deleteItemText;
         ImageView imageView;
 
-        ViewHolder(TextView textView, TextView deleteItemText, ImageView imageView) {
-            this.textView = textView;
+        ViewHolder(TextView textShoppingCartItem, TextView textPriceItem, TextView deleteItemText, ImageView imageView) {
+            this.textShoppingCartItem = textShoppingCartItem;
+            this.textPriceItem = textPriceItem;
             this.imageView = imageView;
             this.deleteItemText = deleteItemText;
         }
 
-        public void setText(String text) {
-            textView.setText(text);
+        public void setShoppingItemTexts(ShoppingItem shoppingItem) {
+            textShoppingCartItem.setText(shoppingItem.getItemName());
+            textPriceItem.setText(String.format("R$ %s", shoppingItem.getItemPrice()));
         }
     }
 }

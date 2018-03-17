@@ -29,13 +29,6 @@ public class ShoppingListViewModelTest {
     }
 
     @Test
-    public void shouldReturnEmptyObservableForEmptyDataModel() throws Exception {
-        when(dataModel.getShoppingItems()).thenReturn(Observable.empty());
-
-        assertEquals(Observable.empty(), viewModel.getAvailableShoppingItems());
-    }
-
-    @Test
     public void shouldReturnListOfShoppingItemsObservableForDataModel() throws Exception {
         List<ShoppingItem> shoppingItems = Arrays.asList(
                 new ShoppingItem("Blusa Manga Longa", "", "", "56.90", true, 10),
