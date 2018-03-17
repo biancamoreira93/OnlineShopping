@@ -19,8 +19,8 @@ import java.util.List;
 
 public class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
 
-    List<ShoppingItem> shoppingItems;
-    OnDataChangeListener onDataChangeListener;
+    private List<ShoppingItem> shoppingItems;
+    private OnDataChangeListener onDataChangeListener;
 
     public ShoppingCartListAdapter(@NonNull Context context, int resource, @NonNull List<ShoppingItem> shoppingItems) {
         super(context, resource, shoppingItems);
@@ -75,6 +75,11 @@ public class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
         View deleteItemFromCart = view.findViewById(R.id.deleteItemFromCart);
         View priceItemCart = view.findViewById(R.id.priceItemCart);
 
+        viewSwipeListener(view, deleteItemFromCart, priceItemCart);
+        deleteItemListener(shoppingItem, deleteItemFromCart);
+    }
+
+    private void viewSwipeListener(View view, View deleteItemFromCart, View priceItemCart) {
         view.setOnTouchListener(new OnSwipeTouchListener(this.getContext()) {
             @Override
             public void onSwipeLeft() {
@@ -85,7 +90,9 @@ public class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
                 priceItemCart.setVisibility(View.GONE);
             }
         });
+    }
 
+    private void deleteItemListener(ShoppingItem shoppingItem, View deleteItemFromCart) {
         deleteItemFromCart.setOnClickListener(v -> {
             this.shoppingItems.remove(shoppingItem);
             notifyDataSetChanged();
@@ -106,7 +113,7 @@ public class ShoppingCartListAdapter extends ArrayAdapter<ShoppingItem> {
             this.deleteItemText = deleteItemText;
         }
 
-        public void setShoppingItemTexts(ShoppingItem shoppingItem) {
+        void setShoppingItemTexts(ShoppingItem shoppingItem) {
             textShoppingCartItem.setText(shoppingItem.getItemName());
             textPriceItem.setText(String.format("R$ %s", shoppingItem.getItemPrice()));
         }

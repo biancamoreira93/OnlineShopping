@@ -110,12 +110,11 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements F
             if (constraint == null || constraint.length() == 0) {
                 results.values = shoppingItemsFilter;
                 results.count = shoppingItemsFilter.size();
-            }
-            else {
+            } else {
                 ArrayList<ShoppingItem> filteredShoppingItem = new ArrayList<>();
 
                 for (ShoppingItem shoppingItem : shoppingItemsFilter) {
-                    if (shoppingItem.getItemName().toUpperCase().contains( constraint.toString().toUpperCase() )) {
+                    if (shoppingItem.getItemName().toUpperCase().contains(constraint.toString().toUpperCase())) {
                         filteredShoppingItem.add(shoppingItem);
                     }
                 }
