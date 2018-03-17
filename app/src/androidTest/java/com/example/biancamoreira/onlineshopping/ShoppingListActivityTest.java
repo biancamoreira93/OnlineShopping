@@ -29,7 +29,14 @@ public class ShoppingListActivityTest {
     @Test
     public void initiatesShoppingListWhenOpeningActivity() {
         onView(allOf(withId(R.id.searchText), withHint(R.string.search_products)));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("56.90"))).check(matches(isCompletelyDisplayed()));
         onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("90.90"))).check(matches(isCompletelyDisplayed()));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("120.90"))).check(matches(isCompletelyDisplayed()));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("85.90"))).check(matches(isCompletelyDisplayed()));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("75.90"))).check(matches(isCompletelyDisplayed()));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("50.90"))).check(matches(isCompletelyDisplayed()));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("190.90"))).check(matches(isCompletelyDisplayed()));
+        onData(allOf(is(instanceOf(ShoppingItem.class)), withPrice("130.90"))).check(matches(isCompletelyDisplayed()));
     }
 
     private static Matcher<ShoppingItem> withPrice(String price){

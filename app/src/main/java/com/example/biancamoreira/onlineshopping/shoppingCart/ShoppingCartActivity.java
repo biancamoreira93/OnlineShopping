@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -47,7 +48,8 @@ public class ShoppingCartActivity extends AppCompatActivity implements OnDataCha
         shoppingItem = (ShoppingItem) getIntent().getSerializableExtra("shoppingItem");
         cart = CartHelper.getCart();
 
-        cart.addShoppingItem(shoppingItem);
+        if(shoppingItem != null) { cart.addShoppingItem(shoppingItem); }
+
         setShoppingListOptions(cart.getShoppingItems());
     }
 
@@ -67,8 +69,24 @@ public class ShoppingCartActivity extends AppCompatActivity implements OnDataCha
 
     @Override
     public void dataChanged(List<ShoppingItem> shoppingItems) {
+        TextView textView = findViewById(R.id.emptyCartText);
+        LinearLayout priceLayout = findViewById(R.id.priceLayout);
+
+        if (shoppingItems.isEmpty()) {
+            textView.setVisibility(View.VISIBLE);
+            shoppingCartList.setVisibility(View.GONE);
+            priceLayout.setVisibility(View.GONE);
+        } else {
+            textView.setVisibility(View.GONE);
+            shoppingCartList.setVisibility(View.VISIBLE);
+            priceLayout.setVisibility(View.VISIBLE);
+            bindTotalPriceText(shoppingItems);
+        }
+    }
+
+    private void bindTotalPriceText(List<ShoppingItem> shoppingItems) {
         compositeDisposable.add(
-                shoppingCartViewModel.updateShoppingCartTotalPrice(shoppingCartListAdapter.shoppingItems)
+                shoppingCartViewModel.updateShoppingCartTotalPrice(shoppingItems)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.computation())
                         .subscribe(this::setShoppingTotalPrice)

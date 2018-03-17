@@ -7,4 +7,5 @@
     <string name="payment">Close Cart and Pay</string>
     <string name="continue_shopping">Continue Shopping</string>
     <string name="search_products">Search products</string>
+    <string name="empty_shopping_cart_text">Your shopping car is empty :(</string>
 </resources>
