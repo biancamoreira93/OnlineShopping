@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -46,17 +48,37 @@ public class ShoppingListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bind();
+        setListeners();
     }
 
     private void bind() {
         compositeDisposable = new CompositeDisposable();
-
         compositeDisposable.add(shoppingListViewModel.getAvailableShoppingItems()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::setShoppingListOptions)
         );
 
+    }
+
+    private void setListeners() {
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String search = searchText.getText().toString();
+                shoppingListAdapter.performFiltering(search);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void setShoppingListOptions(List<ShoppingItem> shoppingItems) {
@@ -78,9 +100,4 @@ public class ShoppingListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    public void searchItem(View view) {
-        String search = searchText.getText().toString();
-        shoppingListAdapter.getFilter().filter(search);
-    }
 }

@@ -18,11 +18,16 @@ import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements Filterable {
 
     private List<ShoppingItem> shoppingItems;
     private List<ShoppingItem> shoppingItemsFilter;
-    private ShoppingItemFiltered filtered;
+    private Disposable disposable;
     private Context context;
 
     public ShoppingListAdapter(@NonNull Context context, int resource, @NonNull List<ShoppingItem> objects) {
@@ -70,18 +75,38 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements F
         return view;
     }
 
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        if (filtered == null) {
-            filtered = new ShoppingItemFiltered();
-        }
-        return filtered;
-    }
-
     private View inflateView() {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         return layoutInflater.inflate(R.layout.linear_layout_shopping_list, null);
+    }
+
+    public void performFiltering(CharSequence constraint) {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+
+        disposable = shoppingItemsObservable(constraint)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::publishResults);
+    }
+
+    @NonNull
+    private Observable<ArrayList<ShoppingItem>> shoppingItemsObservable(CharSequence constraint) {
+        ArrayList<ShoppingItem> filteredShoppingItem = new ArrayList<>();
+
+        for (ShoppingItem shoppingItem : shoppingItemsFilter) {
+            if (shoppingItem.getItemName().toUpperCase().contains(constraint.toString().toUpperCase())) {
+                filteredShoppingItem.add(shoppingItem);
+            }
+        }
+
+        return Observable.just(filteredShoppingItem);
+    }
+
+    protected void publishResults(List<ShoppingItem> shoppingItems) {
+        this.shoppingItems = shoppingItems;
+        notifyDataSetChanged();
     }
 
     private class ViewHolder {
@@ -98,38 +123,6 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements F
         void setShoppingItemTexts(ShoppingItem shoppingItem) {
             this.textShoppingItem.setText(shoppingItem.getItemName());
             this.texPriceItem.setText(String.format("R$ %s", shoppingItem.getItemPrice()));
-        }
-    }
-
-    private class ShoppingItemFiltered extends Filter {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults results = new FilterResults();
-
-            if (constraint == null || constraint.length() == 0) {
-                results.values = shoppingItemsFilter;
-                results.count = shoppingItemsFilter.size();
-            } else {
-                ArrayList<ShoppingItem> filteredShoppingItem = new ArrayList<>();
-
-                for (ShoppingItem shoppingItem : shoppingItemsFilter) {
-                    if (shoppingItem.getItemName().toUpperCase().contains(constraint.toString().toUpperCase())) {
-                        filteredShoppingItem.add(shoppingItem);
-                    }
-                }
-
-                results.values = filteredShoppingItem;
-                results.count = filteredShoppingItem.size();
-            }
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            shoppingItems = (ArrayList<ShoppingItem>) results.values;
-            notifyDataSetChanged();
         }
     }
 }
