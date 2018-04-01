@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
 
+import com.example.biancamoreira.onlineshopping.TextWatcherOnTextChanged;
 import com.example.biancamoreira.onlineshopping.itemDetails.ItemDetailsActivity;
 import com.example.biancamoreira.onlineshopping.R;
 import com.example.biancamoreira.onlineshopping.domain.ShoppingItem;
@@ -62,21 +63,11 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        searchText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+        searchText.addTextChangedListener(new TextWatcherOnTextChanged() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String search = searchText.getText().toString();
                 shoppingListAdapter.performFiltering(search);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
     }
